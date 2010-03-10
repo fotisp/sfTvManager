@@ -1,0 +1,26 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Series
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          series
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        display:          [=name]
+        object_actions:
+            seasons:      ~
+            _edit:        ~
+            _delete:      ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

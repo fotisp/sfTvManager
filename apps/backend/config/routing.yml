@@ -1,0 +1,50 @@
+preferences:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                preferences
+    module:               preferences
+    prefix_path:          /preferences
+    column:               id
+    with_wildcard_routes: true
+
+season:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Season
+    module:               season
+    prefix_path:          /season
+    column:               id
+    with_wildcard_routes: true
+
+series:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Series
+    module:               series
+    prefix_path:          /series
+    column:               id
+    with_wildcard_routes: true
+
+season_series:
+  url:    /season_series/:season
+  param:  { module: season, action: seasonFilter }
+  requirements: { season: \d+ }
+  
+  
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: series, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+#default_index:
+#  url:   /:module
+#  param: { action: index }
+
+#default:
+#  url:   /:module/:action/*

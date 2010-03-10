@@ -1,0 +1,20 @@
+Series:
+  actAs:  { Timestampable: ~ }
+  columns:
+    name:     { type: string(255), notnull: true }
+Season:
+  actAs:  { Timestampable: ~ }
+  columns:
+    number:       { type: string(255), notnull: true }
+    start_date:   { type: date, notnull: false }
+    feed:         { type: string(1000), notnull: true }
+    regex:        { type: text, notnull: true }
+    series_id:    { type: integer, notnull: true }
+  relations:
+    Series:   { onDelete: CASCADE, local: series_id, foreign: id, foreignAlias: Seasons }
+Preferences:
+  actAs:  { Timestampable: ~ }
+  columns:
+    name:         { type: string(255), notnull: true }
+    value:        { type: text, notnull: true}
+    
