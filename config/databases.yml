@@ -1,10 +1,18 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/07-Databases
 
-all:
+dev:
   doctrine:
     class: sfDoctrineDatabase
     param:
       dsn:      mysql:host=localhost;dbname=MythTv
       username: mythtv
       password: 1234
+test:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=localhost;dbname=MythTv_test
+      username: mythtv
+      password: 1234
+      

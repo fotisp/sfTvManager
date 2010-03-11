@@ -15,7 +15,7 @@ class ProjectConfiguration extends sfProjectConfiguration
 
 		$this->enablePlugins('sfTaskExtraPlugin');
 		$this->enablePlugins('exTransmissionApiPlugin');
-
+		
 	}
 
 	public function setupPlugins(){
