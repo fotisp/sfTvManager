@@ -6,6 +6,14 @@
 
 class TransmissionRegex{
 
+	public function  __construct($regex = array()) {
+		$this->regex = $regex;
+	}
+
+
+	public function getPatterns(){
+		return $this->regex;
+	}
 
 	
 }

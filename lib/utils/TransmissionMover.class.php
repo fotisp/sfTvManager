@@ -1,5 +1,8 @@
 <?php
-/* 
+include dirname(__FILE__)."/../helper/PregFindHelper.php";
+
+/*
+ *
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -39,8 +42,6 @@ class TransmissionMover{
 	
 	public function run($dry=false){
 
-		sfContext::getInstance()->getConfiguration()->loadHelpers("pregFind");
-
 		//get all the files
 
 		$patterns = $this->regex->getPatterns();
@@ -49,18 +50,18 @@ class TransmissionMover{
 
 		foreach ($patterns as $key => $pattern) {
 
-			$files = array_merget($files,preg_find($pattern,$this->srcDirectory));
+			$files = array_merge($files,preg_find($pattern,$this->srcDirectory));
 
 		}
 
 
 		foreach($files as $f){
 
-			$src = $this->srcDirectory."/".$f;
-			$dest = $this->destDirectory."/".$f;
+			$src = $f;
+			$dest = $this->destDirectory."/".basename($f);
 
-			if($dry_run){
-				echo "mv $src to $dest"; 
+			if($dry){
+				echo "mv $src to $dest\n";
 			}else{
 				rename($src, $dest);
 			}

@@ -4,6 +4,7 @@ include dirname(__FILE__)."/../bootstrap/unit.php";
 
 $configuration = ProjectConfiguration::getApplicationConfiguration('backend', 'test', true);
 
+
 $t = new lime_test(1, new lime_output_color());
 
 
@@ -30,6 +31,7 @@ mkdir($destTestDir,0777,true);
 
 //copy all the files to the src dir
 $files=glob(sfConfig::get('sf_data_dir')."/test/regex/*");
+
 foreach($files as $f){
 	copy($f,$srcTestDir."/".basename($f));
 }
@@ -37,5 +39,11 @@ foreach($files as $f){
 #################### start Tests ##########################
 
 
+$regex = new TransmissionRegex(
+								array(
+									"/How\.I\.Met\.Your\.Mother\.S05E\d{2}([\.\w]+)?\.HDTV(-BDS)?\.XviD(-(NoTV|2HD|XII|FQM))\.\[VTV\]\.avi/"));
 
+$tm = new TransmissionMover($srcTestDir, $destTestDir, $regex);
+
+$tm->run();
 
